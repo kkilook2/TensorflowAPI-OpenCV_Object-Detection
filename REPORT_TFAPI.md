@@ -67,7 +67,8 @@ TFAPI으로 학습 -> 학습된 모델 -> OpenCV로딩 -> TFAPI & OpenCV Object 
   
   
   
-  <#1 학습용 디렉토리 생성 >
+ 
+ <#1 학습용 디렉토리 생성 >
   
   ~/DLCV/Detection/Tensor_api/___new directory name___ (mkdir  director name)
   
@@ -78,6 +79,7 @@ TFAPI으로 학습 -> 학습된 모델 -> OpenCV로딩 -> TFAPI & OpenCV Object 
                                                           "   pretrained     <=ssd_inception_v2, coco_da
                                                           
                                                           "   training       <=trained data write place : 학습된 데이터 저장, w(가중치)값들
+                                                          
                                                           
                                                           
                                                           
@@ -92,7 +94,8 @@ TFAPI으로 학습 -> 학습된 모델 -> OpenCV로딩 -> TFAPI & OpenCV Object 
                                                            /pretrained/ : tar -xvf ssd_inception_v2_coco.tar.gz    : 압축풀기
                                                
                                                
-                                                           
+                                                       
+                                                       
   <#3 Label Map 생성 >
   
   -label map download- 
@@ -100,11 +103,41 @@ TFAPI으로 학습 -> 학습된 모델 -> OpenCV로딩 -> TFAPI & OpenCV Object 
   __address__ : https://github.com/tensorflow/models/tree/master/research/object_detection/data /__알맞은 label map. pbtxt__ (raw 주소 복사)
   
  
-  cmd : ~DLCV/Detection/Tensor_api/___new directory name____/annotations/ : wget __address__
+  cmd : ~/DLCV/Detection/Tensor_api/___new directory name____/annotations/ : wget __address__
   
   
   
                                                         
+   <#4 Dataset을 tf.record로 변환 >
+   
+   -record.py download-
+   
+   __address__ : https://github.com/tensorflow/models/tree/master/research/object_detection/dataset_tools  /__알맞은 record.py__ (우클릭, 파일주소복사)
+   
+   (나중엔 우리가 record.py를 직접 customizing 해야한다..)
+   
+   
+   
+   EXPORT & PATH 설정
+   
+   __BASE DIR__ = ~/DLCV/Detection/Tensor_api/___new directory name___/ 여기서 진행
+   
+   1. export TRAIN_DIR = ~/DLCV/Detection/Tensor_api/___new directory name___
+   
+   2. export DATA_DIR = ~/DLCV/data/ox_pet_tensor
+   
+   3. export TENSOR_OBJ_DIR = ~/DLCV/Detection/Tensor_api/models/research/object_detection
+   
+   4. export PYTHON.PATH = $PYTHONPATH : ~/DLCV/Detection/Tensor_api/models/research : ~/DLCV/Detection/Tensor_api/models/research/object_detection
+   
+   5. python $TENSOR_OBJ_DIR/dataset_tools/___알맞은 record.py___ --label_map_path = $TRAIN_DIR/annotations/___알맞은 label map. pbtxt___ --data-dir = $DATA_DIR --output_dir = $TRAIN_DIR/annotations/ 
+   
   
+   위 1~5를 수행하면, $TRAIN_DIR/annotations/에  xxx_train.record & xxx_val.record 생성 
+   
+   
+   
+
+
   
 
