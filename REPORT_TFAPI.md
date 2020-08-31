@@ -29,9 +29,13 @@ TFAPI으로 학습 -> 학습된 모델 -> OpenCV로딩 -> TFAPI & OpenCV Object 
       code>> python3 main.py downloader --classes ____class____, ____class____ --type_csv --multiclass 1 __train/validation/test 中 1__
 
 
+
+
 <DOWNLOAD Tensorflow Object Detection API>
   
   Github : https://github.com/tensorflow/models/tree/master/research/object_detection
+  
+  
   
   
 <TRAINING _ CUSTOM DATASET TRAINING PROCESS>
