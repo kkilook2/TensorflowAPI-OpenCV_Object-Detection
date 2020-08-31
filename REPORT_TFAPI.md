@@ -3,10 +3,13 @@ Hello , I'm Kkilook Dev.
 
 report 2020_08_31
 #1. Tensorflow Object Detection API 
+
 <개요>
+
 TFAPI으로 학습 -> 학습된 모델 -> OpenCV로딩 -> TFAPI & OpenCV Object Detection 
 
 <DATASET>
+  
   Tensorflow Detection Model Zoo -> pretrained model provide
   
   +other DATASETS
