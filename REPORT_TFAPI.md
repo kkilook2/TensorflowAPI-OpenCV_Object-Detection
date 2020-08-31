@@ -13,8 +13,10 @@ TFAPI으로 학습 -> 학습된 모델 -> OpenCV로딩 -> TFAPI & OpenCV Object 
   Tensorflow Detection Model Zoo -> pretrained model provide
   
   +other DATASETS
+  
    -1: PASCAL_VOC (20 Category)
-   -2: MS COCO (80 Category)
+   
+   -2: MS COCO (80 Category)\n
    -3: Google OPEN Image (600 Category) 
      -- 원하는 데이터 출 가능 --
       OIDv4 tool kit -> OPEN Image에서 원하는 category 추출가능
