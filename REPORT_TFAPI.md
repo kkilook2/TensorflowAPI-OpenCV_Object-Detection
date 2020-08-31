@@ -31,14 +31,14 @@ TFAPI으로 학습 -> 학습된 모델 -> OpenCV로딩 -> TFAPI & OpenCV Object 
 
 
 
-<DOWNLOAD Tensorflow Object Detection API>
+ < DOWNLOAD Tensorflow Object Detection API >
   
   Github : https://github.com/tensorflow/models/tree/master/research/object_detection
   
   
   
   
-<TRAINING _ CUSTOM DATASET TRAINING PROCESS>
+ < TRAINING _ CUSTOM DATASET TRAINING PROCESS >
   
   API는 tf.record & config 설정이 중요 !!
   
