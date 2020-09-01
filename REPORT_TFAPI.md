@@ -107,6 +107,7 @@ TFAPI으로 학습 -> 학습된 모델 -> OpenCV로딩 -> TFAPI & OpenCV Object 
   
   
   
+  
                                                         
    <#4 Dataset을 tf.record로 변환 >
    
@@ -135,6 +136,33 @@ TFAPI으로 학습 -> 학습된 모델 -> OpenCV로딩 -> TFAPI & OpenCV Object 
   
    위 1~5를 수행하면, $TRAIN_DIR/annotations/에  xxx_train.record & xxx_val.record 생성 
    
+   
+   
+   <#5 Pipeline Config 수정 >
+   
+   pipeline config -> 학습을 위한 config를 일련의 파일에 모두 모아놓은 것 !
+   
+   
+   (파일옮기기)
+   
+   ~/DLCV/Detection/Tensor_api/models/research/object_detection/samples/configs/___알맞은 config 파일. config___ (이거를 cp를 이용해 복사 및 이동)
+   
+   >> cp ___알맞은 config 파일. config___   ~DLCV/Detection/Tensor_api/____new directory name____/config/ (여기로 이동)
+   
+   
+   
+   <학습수행 코드>
+   
+   >> python train.py --logtostderr --train_dir = training/--pipeline_config_path =config/___알맞은 config 파일. config___
+  
+             위 train.py도 파일옮겨와야한다.
+             
+             (파일옮기기)
+             
+             ~/DLCV/Detection/Tensro_api/models/research/object_detection/legacy/train.py  (이거를 cp를 이용해 복사 및 이동)
+             
+             >> cp train.py ~/DLCV/Detection/Tensor_api/____new directory name____/ (여기로 이동)
+             
    
    
 
