@@ -150,11 +150,11 @@ TFAPI으로 학습 -> 학습된 모델 -> OpenCV로딩 -> TFAPI & OpenCV Object 
    >> cp ___알맞은 config 파일. config___   ~DLCV/Detection/Tensor_api/____new directory name____/config/ (여기로 이동)
    
    
-   
+   <#6 학습 수행 >
    <학습수행 코드>
    
    >> python train.py --logtostderr --train_dir = training/--pipeline_config_path =config/___알맞은 config 파일. config___
-  
+    
              위 train.py도 파일옮겨와야한다.
              
              (파일옮기기)
@@ -165,7 +165,59 @@ TFAPI으로 학습 -> 학습된 모델 -> OpenCV로딩 -> TFAPI & OpenCV Object 
              
    
    
-
-
+  
+  
   
 
+   <#7 학습 수행 후 TF인식가능한 Inference model 생성_ frozen_inference_graph.pb >
+   
+   학습이 끝나면,, 
+   
+   ../____new directory name____/training/xxxxx.1021.data-00000-of-00001
+   
+   ../____new directory name____/training/xxxxx.2033.data-00000-of-00001
+  
+   ../____new directory name____/training/xxxxx.4021.data-00000-of-00001
+   
+   같은 데이터들이 들어있는데, 이를 inference모델로 만들어줘야한다,
+   
+   
+   
+   inference모델 만드는 도구 : export_inference_graph.py 
+   
+   (파일 옮기기)
+   
+   ~DLCV/Detection/Tensor_api/models/research/object_detection/export_inference_graph.py (이거를 cp를 이용해 복사 및 이동)
+  
+   >> cp export_inference_graph.py  ~/DLCV/Detection/Tensor_api/____new directory name____/ (여기로 이동)
+   
+   
+   (inference모델 변환 코드 실행)
+   
+   >> python train.py --logtostderr --train_dir = training/--pipeline_config_path =config/___알맞은 config 파일. config___ 
+      trained_checkpoint_pretix=training/model.ckpt-5000 --output_directory=training
+      
+      
+   변환 코드 실행하면
+   
+   ~/DLCV/Detection/Tensor_api/____new directory name____/training/frozen_inference_graph.pb 생성된다 !!!!!!
+   
+    
+   위 파일을 TFcode에서 로드할떈
+   
+   with tf.gfile.FastGFile('./____new directory name____/training/frozen_inference_graph.pb', 'rb') as f :
+   
+        graph_def = tf.GraphDef()
+        
+        graph_def.ParseFromString(f.read())
+        
+   
+   with tf.Session() as sess :
+   
+        sess.graph.as_default()
+        
+        tf.import_graph_def(graph_def, name= ' ')
+        
+        -------추가 detection 관련 코드---------
+   
+                                                                                                                          
